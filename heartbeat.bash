@@ -25,8 +25,15 @@ fi
 # Enter the repository directory
 cd "$HOME/routersense-raspberrypi-client"
 
-# Pull the latest changes from the repository
-git pull origin main
+# Fetch latest state from origin
+git fetch origin main
 
-# Start the client
-./start.bash
+# Get local and remote commit hashes
+LOCAL_COMMIT=$(git rev-parse HEAD)
+REMOTE_COMMIT=$(git rev-parse origin/main)
+
+if [ "$LOCAL_COMMIT" != "$REMOTE_COMMIT" ]; then
+    # Update and restart only when there are changes
+    git pull origin main
+    ./start.bash
+fi
