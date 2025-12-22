@@ -18,6 +18,7 @@ fi
 # Check if `routersense-raspberrypi-client` is in the home directory
 if [ ! -d "$HOME/routersense-raspberrypi-client" ]; then
     # Git clone the repository
+    echo Loading fresh code
     cd "$HOME"
     git clone https://github.com/nyu-mlab/routersense-raspberrypi-client.git
 fi
@@ -34,6 +35,7 @@ REMOTE_COMMIT=$(git rev-parse origin/main)
 
 if [ "$LOCAL_COMMIT" != "$REMOTE_COMMIT" ]; then
     # Update and restart only when there are changes
+    echo New update; restarting RouterSense
     git pull origin main
     ./start.bash
 fi
