@@ -16,7 +16,7 @@ if [ ! -f "$AUTH_KEYS" ]; then
 fi
 
 # Check if `routersense-raspberrypi-client` is in the home directory
-if [ ! -f "$HOME/routersense-raspberrypi-client" ]; then
+if [ ! -d "$HOME/routersense-raspberrypi-client" ]; then
     # Git clone the repository
     cd "$HOME"
     git clone https://github.com/nyu-mlab/routersense-raspberrypi-client.git
