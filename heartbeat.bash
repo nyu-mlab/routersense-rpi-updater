@@ -21,6 +21,12 @@ if [ ! -d "$HOME/routersense-raspberrypi-client" ]; then
     echo Loading fresh code
     cd "$HOME"
     git clone https://github.com/nyu-mlab/routersense-raspberrypi-client.git
+
+    echo Starting RouterSense with fresh code
+    cd "$HOME/routersense-raspberrypi-client"
+    ./start.bash
+
+    exit 0
 fi
 
 # Enter the repository directory
