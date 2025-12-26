@@ -1,3 +1,9 @@
+# Prevent overlapping runs (cron safety)
+LOCKFILE="/tmp/routersense-bootstrap.lock"
+exec 9>"$LOCKFILE"
+flock -n 9 || exit 0
+
+
 date
 
 # Path to authorized_keys file
